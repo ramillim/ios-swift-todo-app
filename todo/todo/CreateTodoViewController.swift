@@ -18,8 +18,9 @@ class CreateTodoViewController: UIViewController {
   }
 
   @IBAction func tapSave(_ sender: UIBarButtonItem) {
-    let newTodo = Todo(task: task.text!)
-    todoTableViewController.addTodo(todo: newTodo)
-    navigationController?.popViewController(animated: true)
+    if let taskText = task.text {
+      todoTableViewController.createTodo(text: taskText)
+      navigationController?.popViewController(animated: true)
+    }
   }
 }

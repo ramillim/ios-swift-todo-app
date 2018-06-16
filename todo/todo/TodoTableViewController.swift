@@ -10,11 +10,14 @@ import UIKit
 
 class TodoTableViewController: UITableViewController {
 
-  var todos : [Todo] = []
+  var todos : [TodoCoreData] = []
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    todos = Todo.seedData()
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    fetchTodos()
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,12 +52,28 @@ class TodoTableViewController: UITableViewController {
     return action
   }
 
-
   // MARK: - Todo Collection State Functions
 
-  func addTodo(todo: Todo) {
-    todos.append(todo)
-    tableView.reloadData()
+  func fetchTodos() {
+    if let viewContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+
+      if let todosCoreData = try? viewContext.fetch(TodoCoreData.fetchRequest()) as? [TodoCoreData] {
+        if let fetchedTodos = todosCoreData {
+          todos = fetchedTodos
+          tableView.reloadData()
+        }
+      }
+    }
+  }
+
+  func createTodo(text: String) {
+    if let viewContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+      let newTodo = TodoCoreData(entity: TodoCoreData.entity(), insertInto: viewContext)
+      newTodo.task = text
+      newTodo.isComplete = false
+      try? viewContext.save()
+      tableView.reloadData()
+    }
   }
 
   func completeTodo(at indexPath: IndexPath) {
