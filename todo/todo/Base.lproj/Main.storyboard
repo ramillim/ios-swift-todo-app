@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,12 +43,64 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Todos" id="OYM-bT-Yjj">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="woE-mb-NOL"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="woE-mb-NOL">
+                            <connections>
+                                <segue destination="Rvv-Hs-rnr" kind="show" id="Pnp-WO-NAQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04S-9f-98s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1828" y="-659.82008995502258"/>
+        </scene>
+        <!--Create Todo-->
+        <scene sceneID="KKE-if-cEp">
+            <objects>
+                <viewController title="Create Todo" id="Rvv-Hs-rnr" customClass="CreateTodoViewController" customModule="todo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XMt-Yg-mtd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xyu-7Y-XgP">
+                                <rect key="frame" x="20" y="84" width="40" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GzL-an-YmA">
+                                <rect key="frame" x="20" y="115" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GzL-an-YmA" firstAttribute="top" secondItem="Xyu-7Y-XgP" secondAttribute="bottom" constant="10" id="9kw-WM-dgg"/>
+                            <constraint firstItem="V5b-Ru-zMG" firstAttribute="trailing" secondItem="GzL-an-YmA" secondAttribute="trailing" constant="20" id="9q5-Jo-BRi"/>
+                            <constraint firstItem="Xyu-7Y-XgP" firstAttribute="leading" secondItem="V5b-Ru-zMG" secondAttribute="leading" constant="20" id="R4N-Ob-lOJ"/>
+                            <constraint firstItem="GzL-an-YmA" firstAttribute="leading" secondItem="V5b-Ru-zMG" secondAttribute="leading" constant="20" id="a7f-jy-Bpy"/>
+                            <constraint firstItem="Xyu-7Y-XgP" firstAttribute="top" secondItem="V5b-Ru-zMG" secondAttribute="top" constant="20" id="gBs-ed-TCU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="V5b-Ru-zMG"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Create Todo" id="zz9-A3-gt7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="agk-QH-VRJ">
+                            <connections>
+                                <action selector="tapSave:" destination="Rvv-Hs-rnr" id="cbH-W3-Qoj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="task" destination="GzL-an-YmA" id="AUJ-sr-MCv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g7d-Uo-XO1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2605.5999999999999" y="-660.71964017991013"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5Ax-iy-LbA">
