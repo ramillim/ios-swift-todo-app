@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hIq-5f-snB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NVb-1Y-Fit">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Todos-->
         <scene sceneID="dM9-4N-btS">
             <objects>
-                <tableViewController id="5AH-EI-lay" customClass="TodoTableViewController" customModule="todo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TodoTableViewController" title="Todos" id="5AH-EI-lay" customClass="TodoTableViewController" customModule="todo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6iv-lu-Lm1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,6 +46,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Todos" id="OYM-bT-Yjj">
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="UNj-SN-1NN">
+                            <connections>
+                                <action selector="tapSignOut:" destination="5AH-EI-lay" id="AW3-wF-aIF"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="woE-mb-NOL">
                             <connections>
                                 <segue destination="Rvv-Hs-rnr" kind="show" identifier="createSegue" id="0cV-tf-obN"/>
@@ -55,7 +60,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04S-9f-98s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1828" y="-659.82008995502258"/>
+            <point key="canvasLocation" x="2767.1999999999998" y="-659.82008995502258"/>
         </scene>
         <!--Update Todo-->
         <scene sceneID="YEj-pq-wXy">
@@ -101,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4R4-H5-NiW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2657" y="-191"/>
+            <point key="canvasLocation" x="4535.1999999999998" y="-191.1544227886057"/>
         </scene>
         <!--Create Todo-->
         <scene sceneID="KKE-if-cEp">
@@ -149,25 +154,55 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7d-Uo-XO1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2657" y="-876"/>
+            <point key="canvasLocation" x="3596" y="-876.61169415292363"/>
+        </scene>
+        <!--LoginViewController-->
+        <scene sceneID="rfh-7r-d2g">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" title="LoginViewController" id="Sqb-xR-mQE" customClass="LoginViewController" customModule="todo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="23Q-1a-7Cf" customClass="Login">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo List App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCn-zx-I0a">
+                                <rect key="frame" x="30" y="296" width="315" height="75"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dCn-zx-I0a" firstAttribute="centerY" secondItem="23Q-1a-7Cf" secondAttribute="centerY" id="G5I-a0-CKV"/>
+                            <constraint firstItem="dCn-zx-I0a" firstAttribute="leading" secondItem="oTt-yO-8WM" secondAttribute="leading" constant="30" id="dXn-fQ-5SC"/>
+                            <constraint firstItem="oTt-yO-8WM" firstAttribute="trailing" secondItem="dCn-zx-I0a" secondAttribute="trailing" constant="30" id="l47-9u-2DB"/>
+                            <constraint firstItem="dCn-zx-I0a" firstAttribute="top" secondItem="oTt-yO-8WM" secondAttribute="top" constant="276" id="vr5-fI-PX5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oTt-yO-8WM"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fiT-BA-j7t"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LYR-2P-Cgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="874" y="-660"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="5Ax-iy-LbA">
+        <scene sceneID="ElY-px-XcJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hIq-5f-snB" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NVb-1Y-Fit" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qFn-VL-bzm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BVj-N1-yGE">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="5AH-EI-lay" kind="relationship" relationship="rootViewController" id="z58-nU-BPH"/>
+                        <segue destination="5AH-EI-lay" kind="relationship" relationship="rootViewController" id="jlk-Zv-t1I"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hbh-M6-VEE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RjD-Z0-8Rz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="888.79999999999995" y="-659.82008995502258"/>
+            <point key="canvasLocation" x="1828" y="-659.82008995502258"/>
         </scene>
     </scenes>
 </document>

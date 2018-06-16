@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Auth0
 
 class TodoTableViewController: UITableViewController {
 
@@ -32,13 +33,22 @@ class TodoTableViewController: UITableViewController {
     return cell
   }
 
+  @IBAction func tapSignOut(_ sender: Any) {
+    let credentialsManager = CredentialsManager(authentication: Auth0.authentication())
+    credentialsManager.clear()
+    self.present(LoginViewController(), animated: true, completion: nil)
+  }
+
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "createSegue" {
-      let destinationView = segue.destination as! CreateTodoViewController
-      destinationView.todoTableViewController = self
-    } else if segue.identifier == "updateSegue" {
-      let destinationView = segue.destination as! UpdateTodoViewController
-      destinationView.todoTableViewController = self
+    switch segue.identifier {
+      case "createSegue":
+        let destinationView = segue.destination as! CreateTodoViewController
+        destinationView.todoTableViewController = self
+      case "updateSegue":
+        let destinationView = segue.destination as! UpdateTodoViewController
+        destinationView.todoTableViewController = self
+      default:
+        print("Error")
     }
   }
 
@@ -49,7 +59,6 @@ class TodoTableViewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     selectedTodo = todos[indexPath.row]
-//    self.performSegue(withIdentifier: "updateSegue", sender: self)
   }
 
   // MARK: - Swipe Actions
@@ -81,7 +90,6 @@ class TodoTableViewController: UITableViewController {
     if let viewContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
       let newTodo = TodoCoreData(entity: TodoCoreData.entity(), insertInto: viewContext)
       newTodo.task = text
-      newTodo.isComplete = false
       try? viewContext.save()
       tableView.reloadData()
     }
