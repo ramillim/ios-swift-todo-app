@@ -33,8 +33,34 @@ class TodoTableViewController: UITableViewController {
     createTodoView.todoTableViewController = self
   }
 
+  override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    let complete = completeAction(at: indexPath)
+    return UISwipeActionsConfiguration(actions: [complete])
+  }
+
+  // MARK: - Swipe Actions
+
+  func completeAction(at indexPath: IndexPath) -> UIContextualAction {
+    let action = UIContextualAction(style: .destructive, title: "Complete") { (action, view, completion) in
+      self.completeTodo(at: indexPath)
+      completion(true)
+    }
+    action.backgroundColor = .red
+    return action
+  }
+
+
+  // MARK: - Todo Collection State Functions
+
   func addTodo(todo: Todo) {
     todos.append(todo)
     tableView.reloadData()
+  }
+
+  func completeTodo(at indexPath: IndexPath) {
+    let todo = todos[indexPath.row]
+    todo.isComplete = true
+    todos.remove(at: indexPath.row)
+    tableView.deleteRows(at: [indexPath], with: .automatic)
   }
 }
