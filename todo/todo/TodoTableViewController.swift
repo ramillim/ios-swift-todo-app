@@ -11,6 +11,7 @@ import UIKit
 class TodoTableViewController: UITableViewController {
 
   var todos : [TodoCoreData] = []
+  var selectedTodo : TodoCoreData?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -32,13 +33,23 @@ class TodoTableViewController: UITableViewController {
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    let createTodoView = segue.destination as! CreateTodoViewController
-    createTodoView.todoTableViewController = self
+    if segue.identifier == "createSegue" {
+      let destinationView = segue.destination as! CreateTodoViewController
+      destinationView.todoTableViewController = self
+    } else if segue.identifier == "updateSegue" {
+      let destinationView = segue.destination as! UpdateTodoViewController
+      destinationView.todoTableViewController = self
+    }
   }
 
   override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     let complete = completeAction(at: indexPath)
     return UISwipeActionsConfiguration(actions: [complete])
+  }
+
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    selectedTodo = todos[indexPath.row]
+//    self.performSegue(withIdentifier: "updateSegue", sender: self)
   }
 
   // MARK: - Swipe Actions
@@ -76,10 +87,24 @@ class TodoTableViewController: UITableViewController {
     }
   }
 
+  func updateTodo(todo: TodoCoreData, text: String) {
+    if let viewContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+      todo.task = text
+      try? viewContext.save()
+      tableView.reloadData()
+    }
+  }
+
   func completeTodo(at indexPath: IndexPath) {
-    let todo = todos[indexPath.row]
-    todo.isComplete = true
-    todos.remove(at: indexPath.row)
-    tableView.deleteRows(at: [indexPath], with: .automatic)
+    if let viewContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+      viewContext.delete(self.todos[indexPath.row])
+      do {
+        try viewContext.save()
+        todos.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+      } catch let error as NSError {
+        print(error.localizedDescription)
+      }
+    }
   }
 }

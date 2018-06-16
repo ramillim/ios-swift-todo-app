@@ -11,15 +11,16 @@ import UIKit
 class CreateTodoViewController: UIViewController {
 
   var todoTableViewController = TodoTableViewController()
-  @IBOutlet weak var task: UITextField!
+  @IBOutlet weak var taskTextField: UITextField!
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    taskTextField.becomeFirstResponder()
   }
 
   @IBAction func tapSave(_ sender: UIBarButtonItem) {
-    if let taskText = task.text {
-      todoTableViewController.createTodo(text: taskText)
+    if let text = taskTextField.text {
+      todoTableViewController.createTodo(text: text)
       navigationController?.popViewController(animated: true)
     }
   }

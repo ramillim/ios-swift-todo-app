@@ -35,6 +35,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="c9h-9A-gkM" kind="show" identifier="updateSegue" id="oTV-yD-7DI"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -45,7 +48,7 @@
                     <navigationItem key="navigationItem" title="Todos" id="OYM-bT-Yjj">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="woE-mb-NOL">
                             <connections>
-                                <segue destination="Rvv-Hs-rnr" kind="show" id="Pnp-WO-NAQ"/>
+                                <segue destination="Rvv-Hs-rnr" kind="show" identifier="createSegue" id="0cV-tf-obN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -53,6 +56,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="04S-9f-98s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1828" y="-659.82008995502258"/>
+        </scene>
+        <!--Update Todo-->
+        <scene sceneID="YEj-pq-wXy">
+            <objects>
+                <viewController title="Update Todo" id="c9h-9A-gkM" customClass="UpdateTodoViewController" customModule="todo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kob-FD-OhW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Wu-d5-9dm">
+                                <rect key="frame" x="20" y="115" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dg-9Q-hDU">
+                                <rect key="frame" x="20" y="84" width="40" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="CO1-0A-gIJ" firstAttribute="trailing" secondItem="0Wu-d5-9dm" secondAttribute="trailing" constant="20" id="Tqq-hw-7RJ"/>
+                            <constraint firstItem="0Wu-d5-9dm" firstAttribute="top" secondItem="9dg-9Q-hDU" secondAttribute="bottom" constant="10" id="fWu-A0-QgW"/>
+                            <constraint firstItem="0Wu-d5-9dm" firstAttribute="leading" secondItem="CO1-0A-gIJ" secondAttribute="leading" constant="20" id="gm7-bZ-HNM"/>
+                            <constraint firstItem="9dg-9Q-hDU" firstAttribute="leading" secondItem="CO1-0A-gIJ" secondAttribute="leading" constant="20" id="nip-t3-K3i"/>
+                            <constraint firstItem="9dg-9Q-hDU" firstAttribute="top" secondItem="CO1-0A-gIJ" secondAttribute="top" constant="20" id="zSJ-Wz-51I"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CO1-0A-gIJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Update Todo" id="WbP-KR-GOd">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Vx9-Oa-IBX">
+                            <connections>
+                                <action selector="tapSave:" destination="c9h-9A-gkM" id="yGe-9y-VHj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="taskTextField" destination="0Wu-d5-9dm" id="1RS-HD-g4W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4R4-H5-NiW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2657" y="-191"/>
         </scene>
         <!--Create Todo-->
         <scene sceneID="KKE-if-cEp">
@@ -89,18 +138,18 @@
                     <navigationItem key="navigationItem" title="Create Todo" id="zz9-A3-gt7">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="agk-QH-VRJ">
                             <connections>
-                                <action selector="tapSave:" destination="Rvv-Hs-rnr" id="cbH-W3-Qoj"/>
+                                <action selector="tapSave:" destination="Rvv-Hs-rnr" id="zey-WE-2UM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="task" destination="GzL-an-YmA" id="AUJ-sr-MCv"/>
+                        <outlet property="taskTextField" destination="GzL-an-YmA" id="Dhy-V5-nha"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7d-Uo-XO1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2605.5999999999999" y="-660.71964017991013"/>
+            <point key="canvasLocation" x="2657" y="-876"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5Ax-iy-LbA">

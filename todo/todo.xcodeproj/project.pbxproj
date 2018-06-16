@@ -15,6 +15,7 @@
 		E472288D20D4A6C400F5378C /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E472288C20D4A6C400F5378C /* Todo.swift */; };
 		E472288F20D4AA6700F5378C /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E472288E20D4AA6700F5378C /* TodoTableViewController.swift */; };
 		E472289120D4B78800F5378C /* CreateTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E472289020D4B78800F5378C /* CreateTodoViewController.swift */; };
+		E472289320D5905D00F5378C /* UpdateTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E472289220D5905D00F5378C /* UpdateTodoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		E472288C20D4A6C400F5378C /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		E472288E20D4AA6700F5378C /* TodoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 		E472289020D4B78800F5378C /* CreateTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTodoViewController.swift; sourceTree = "<group>"; };
+		E472289220D5905D00F5378C /* UpdateTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTodoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				E472287720D4A1B900F5378C /* AppDelegate.swift */,
 				E472289020D4B78800F5378C /* CreateTodoViewController.swift */,
 				E472288E20D4AA6700F5378C /* TodoTableViewController.swift */,
+				E472289220D5905D00F5378C /* UpdateTodoViewController.swift */,
 				E472287B20D4A1B900F5378C /* Main.storyboard */,
 				E472288120D4A1BB00F5378C /* Assets.xcassets */,
 				E472288320D4A1BB00F5378C /* LaunchScreen.storyboard */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E472287820D4A1B900F5378C /* AppDelegate.swift in Sources */,
+				E472289320D5905D00F5378C /* UpdateTodoViewController.swift in Sources */,
 				E472288F20D4AA6700F5378C /* TodoTableViewController.swift in Sources */,
 				E472288020D4A1B900F5378C /* todo.xcdatamodeld in Sources */,
 				E472289120D4B78800F5378C /* CreateTodoViewController.swift in Sources */,
