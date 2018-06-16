@@ -7,10 +7,10 @@
 
 ## To Build in XCode
 
-1. Clone repository: `git clone git@github.com:ramillim/ios-swift-todo-app.git`
+1. Clone repository or use the zipped archive: `git clone git@github.com:ramillim/ios-swift-todo-app.git`
 2. Install pods with Cocoapods: `pod install`
 3. Open the workspace in XCode: `/todo/todo.xcworkspace`
-4. Run: `CMD + R`
+4. Run in simulator: `CMD + R`
 
 ## Features
 
